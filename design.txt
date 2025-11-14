@@ -1,0 +1,32 @@
+[Use "rem" unit sizes]
+Regular Font Size: 
+Heading Font Size: 
+Nav Font Size: 
+Footer Font Size: 
+Form Label Font Size: 
+Form Input Font Size: Should be same as Regular Font Size
+
+[Import a couple Google Fonts, and provide a second generic font in the typeface list]
+Regular Font Typeface: 
+Heading Font Typeface: 
+Nav Font Typeface: Should be same as Regular Font Typeface
+Form Label/Input Font Typeface: Should be same as Regular Font Typeface
+
+[Use 60/30/10 Color Methodology, and create a color palette on Coolors.co]
+(60%) Page Background Color: 
+(30%) Font Color: 
+(10%) Link Color: 
+Link Hover Color: 
+
+[Use "vw" unit sizes]
+Page Padding Size: 
+Page Margin Size: Should be 0
+Main Padding Size: 
+Main Margin Size: 
+Section Padding Size: 
+Section Margin Size: 
+Nav Padding Size: 
+Nav Margin Size: 
+
+[Use between 900 and 960 pixels for the main element and horizontally center it]
+Main Maximum Width: 
