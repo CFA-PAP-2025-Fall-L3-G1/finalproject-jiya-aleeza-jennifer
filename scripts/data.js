@@ -2,16 +2,17 @@ let electivesMap = new Map(); // map of all CSE electives
 let auMap = new Map(); // map of available electives autumn qt
 let wtMap = new Map(); // map of available electives winter qt
 let spMap = new Map(); // map of available electives spring qt
+let fundamentalCourses = new Set(); // a set of required fundamental courses
 
-let fundamentalCourses = new Set();
+let prereqMap = new Map(); // maps all courses to a str of its prereq information
 
 /*
-* Behavior: scanFile scans a file for course information and subcategorizes them into interest-based
+* Behavior: scanElectivesFile scans a file for course information and subcategorizes them into interest-based
             subcategories.
 * Returns: returns an array of sets; each set is a subcategory.
 * Parameters: a file "file" to be scanned for information.
 */
-async function scanFile(file) {
+async function scanElectivesFile(file) {
     let systems = new Set(); // Computer Systems & Architecture subcategory
     let algorithms = new Set(); // Algorithms & Theory subcategory
     let ai = new Set(); // AI/Machine Learning subcategory
@@ -25,7 +26,7 @@ async function scanFile(file) {
 
         // use hybrid processing to read files 
         for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
+            let line = lines[i];
             const tokens = line.split(" ");
             
             for (let j in tokens) {
@@ -54,6 +55,10 @@ async function scanFile(file) {
     return [systems, algorithms, ai, applications];
 }
 
+/*
+* Behavior: scans the fundamental courses and adds them to a set.
+* Parameters: file of the fundamental courses;
+*/
 async function scanFundFile(file) {
     const response = await fetch(file);
 
@@ -72,6 +77,41 @@ async function scanFundFile(file) {
 }
 
 /*
+* Behavior: scans the prereq file to map every course to its prereq info.
+* Parameters: file of the prereq info;
+*/
+async function scanPrereqFile(file) {
+    const response = await fetch(file);
+
+    if (response.ok) {
+        const currFile = await response.text();
+        let lines = currFile.split("\n");
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            
+            let idxOfcolon = line.indexOf(":");
+            let newLine = line.substring(idxOfcolon+2); // +2 to count for : and whitespace
+
+            const tokens = line.split(" ");
+            for (j = 0; j < tokens.length; j++) {
+                let token = tokens[j];
+
+                if (j == 0) { // only want course number as key
+                    prereqMap.set(token, newLine);
+                }
+            }
+        }
+
+    } else {
+        console.error("error");
+
+    }
+    // testing
+    console.log(prereqMap);
+}
+
+/*
 * Behavior: populates each existing quarter map with a unique key-value pair.
 * Parameters: qtMap is the map to be populated;
               arrayOfSets is each the array of sets of all the subcategories; it is also the
@@ -86,9 +126,9 @@ function populateQtMaps(qtMap, arrayOfSets) {
 }
 
 async function main() {
-    const auSets = await scanFile("courses/aucourses.txt");
-    const wtSets = await scanFile("courses/wtcourses.txt");
-    const spSets = await scanFile("courses/spcourses.txt");
+    const auSets = await scanElectivesFile("courses/aucourses.txt");
+    const wtSets = await scanElectivesFile("courses/wtcourses.txt");
+    const spSets = await scanElectivesFile("courses/spcourses.txt");
 
     // populate the quarter maps
     populateQtMaps(auMap, auSets);
@@ -104,12 +144,14 @@ async function main() {
     electivesMap.set("au", auMap);
     electivesMap.set("wt", wtMap);
     electivesMap.set("sp", spMap);
-
+    // testing
     console.log(electivesMap);
 
     // populate fundamental courses set
     scanFundFile("courses/fundamental-courses.txt");
 
+    // populate prereq map
+    scanPrereqFile("courses/prerequisites.txt");
 }
 
 main();
