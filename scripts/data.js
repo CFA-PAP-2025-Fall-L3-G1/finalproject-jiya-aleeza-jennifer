@@ -3,6 +3,8 @@ let auMap = new Map(); // map of available electives autumn qt
 let wtMap = new Map(); // map of available electives winter qt
 let spMap = new Map(); // map of available electives spring qt
 
+let fundamentalCourses = new Set();
+
 /*
 * Behavior: scanFile scans a file for course information and subcategorizes them into interest-based
             subcategories.
@@ -52,6 +54,23 @@ async function scanFile(file) {
     return [systems, algorithms, ai, applications];
 }
 
+async function scanFundFile(file) {
+    const response = await fetch(file);
+
+    if (response.ok) {
+        const currFile = await response.text();
+        const lines = currFile.split("\n");
+
+        lines.forEach(function(line) {
+            fundamentalCourses.add(line);
+        });
+
+    } else {
+        console.error("error");
+    }
+    console.log(fundamentalCourses);
+}
+
 /*
 * Behavior: populates each existing quarter map with a unique key-value pair.
 * Parameters: qtMap is the map to be populated;
@@ -87,6 +106,9 @@ async function main() {
     electivesMap.set("sp", spMap);
 
     console.log(electivesMap);
+
+    // populate fundamental courses set
+    scanFundFile("courses/fundamental-courses.txt");
 
 }
 
