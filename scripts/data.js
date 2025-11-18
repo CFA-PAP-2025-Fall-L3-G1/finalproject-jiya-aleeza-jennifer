@@ -1,10 +1,10 @@
-let electivesMap = new Map(); // map of all CSE electives
+const electivesMap = new Map(); // map of all CSE electives
 let auMap = new Map(); // map of available electives autumn qt
 let wtMap = new Map(); // map of available electives winter qt
 let spMap = new Map(); // map of available electives spring qt
-let fundamentalCourses = new Set(); // a set of required fundamental courses
+const fundamentalCourses = new Set(); // a set of required fundamental courses
 
-let prereqMap = new Map(); // maps all courses to a str of its prereq information
+let courseInfoMap = new Map(); // maps all courses to an array of strings
 
 /*
 * Behavior: scanElectivesFile scans a file for course information and subcategorizes them into interest-based
@@ -77,10 +77,10 @@ async function scanFundFile(file) {
 }
 
 /*
-* Behavior: scans the prereq file to map every course to its prereq info.
+* Behavior: scans the course-info file to map every course to an array of critical course info.
 * Parameters: file of the prereq info;
 */
-async function scanPrereqFile(file) {
+async function scanCourseInfoFile(file) {
     const response = await fetch(file);
 
     if (response.ok) {
@@ -88,17 +88,27 @@ async function scanPrereqFile(file) {
         let lines = currFile.split("\n");
 
         for (let i = 0; i < lines.length; i++) {
+            let courseInfo = [];
             let line = lines[i];
-            
+
+            let idxOfCredits = line.indexOf("(");
+            let credits = line.substring(idxOfCredits, idxOfCredits+3);
+
+            let description = line.substring(4, idxOfCredits-1); // -1 to rid of whitespace
+
             let idxOfcolon = line.indexOf(":");
-            let newLine = line.substring(idxOfcolon+2); // +2 to count for : and whitespace
+            let prereqInfo = line.substring(idxOfcolon+2); // +2 to count for : and whitespace
 
             const tokens = line.split(" ");
             for (j = 0; j < tokens.length; j++) {
                 let token = tokens[j];
 
                 if (j == 0) { // only want course number as key
-                    prereqMap.set(token, newLine);
+                    // ex array: [credits, course description, course prerequisites]
+                    courseInfo.push(credits);
+                    courseInfo.push(description);
+                    courseInfo.push(prereqInfo);
+                    courseInfoMap.set(token, courseInfo);
                 }
             }
         }
@@ -108,7 +118,7 @@ async function scanPrereqFile(file) {
 
     }
     // testing
-    console.log(prereqMap);
+    console.log(courseInfoMap);
 }
 
 /*
@@ -150,8 +160,8 @@ async function main() {
     // populate fundamental courses set
     scanFundFile("courses/fundamental-courses.txt");
 
-    // populate prereq map
-    scanPrereqFile("courses/prerequisites.txt");
+    // populate course info map
+    scanCourseInfoFile("courses/course-info.txt");
 }
 
 main();
