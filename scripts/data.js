@@ -3,6 +3,7 @@ let auMap = new Map(); // map of available electives autumn qt
 let wtMap = new Map(); // map of available electives winter qt
 let spMap = new Map(); // map of available electives spring qt
 const fundamentalCourses = new Set(); // a set of required fundamental courses
+const capstonesMap = new Map(); // a map of available capstone courses for each qt
 
 let courseInfoMap = new Map(); // maps all courses to an array of strings
 
@@ -10,7 +11,7 @@ let courseInfoMap = new Map(); // maps all courses to an array of strings
 * Behavior: scanElectivesFile scans a file for course information and subcategorizes them into interest-based
             subcategories.
 * Returns: returns an array of sets; each set is a subcategory.
-* Parameters: a file "file" to be scanned for information.
+* Parameters: a file to be scanned for course electives information.
 */
 async function scanElectivesFile(file) {
     let systems = new Set(); // Computer Systems & Architecture subcategory
@@ -121,6 +122,40 @@ async function scanCourseInfoFile(file) {
     console.log(courseInfoMap);
 }
 
+async function scanCapstoneFile(file) {
+    const response = await fetch(file);
+    let auCapstones = new Set();
+    let wtCapstones = new Set();
+    let spCapstones = new Set();
+
+    if (response.ok) {
+        const currFile = await response.text();
+        let lines = currFile.split("\n");
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            const tokens = line.split(" ");
+
+            for (let j = 0; j < tokens.length; j++) {
+                let token = tokens[j];
+                
+                if (i == 0) {
+                    auCapstones.add(token);
+                } else if (i == 1) {
+                    wtCapstones.add(token);
+                } else {
+                    spCapstones.add(token);
+                }
+            }
+        }
+
+    } else {
+        console.error(`Error Status: ${response.status}`);
+    }
+    console.log(auCapstones);
+    return [auCapstones, wtCapstones, spCapstones];
+}
+
 /*
 * Behavior: populates each existing quarter map with a unique key-value pair.
 * Parameters: qtMap is the map to be populated;
@@ -133,6 +168,15 @@ function populateQtMaps(qtMap, arrayOfSets) {
     for (let i = 0; i < setCategories.length; i++) {
         qtMap.set(setCategories[i], arrayOfSets[i]);
     }
+}
+
+function populateCapstonesMap(qtCapstonesArray) {
+    const quarters = ["au", "wt", "sp"];
+
+    for(let i = 0; i < quarters.length; i++) {
+        capstonesMap.set(quarters[i], qtCapstonesArray[i]);
+    }
+    console.log(capstonesMap);
 }
 
 async function main() {
@@ -159,6 +203,10 @@ async function main() {
 
     // populate fundamental courses set
     scanFundFile("courses/fundamental-courses.txt");
+
+    // populate capstone courses map
+    let qtCapstonesArray = await scanCapstoneFile("courses/capstone-courses.txt");
+    populateCapstonesMap(qtCapstonesArray);
 
     // populate course info map
     scanCourseInfoFile("courses/course-info.txt");
