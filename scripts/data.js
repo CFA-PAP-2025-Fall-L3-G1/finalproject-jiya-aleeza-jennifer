@@ -71,14 +71,14 @@ async function scanFundFile(file) {
         });
 
     } else {
-        console.error("error");
+        console.error(`Error Status: ${response.status}`);
     }
     console.log(fundamentalCourses);
 }
 
 /*
 * Behavior: scans the course-info file to map every course to an array of critical course info.
-* Parameters: file of the prereq info;
+* Parameters: file of the course info;
 */
 async function scanCourseInfoFile(file) {
     const response = await fetch(file);
@@ -114,7 +114,7 @@ async function scanCourseInfoFile(file) {
         }
 
     } else {
-        console.error("error");
+        console.error(`Error Status: ${response.status}`);
 
     }
     // testing
@@ -136,9 +136,9 @@ function populateQtMaps(qtMap, arrayOfSets) {
 }
 
 async function main() {
-    const auSets = await scanElectivesFile("courses/aucourses.txt");
-    const wtSets = await scanElectivesFile("courses/wtcourses.txt");
-    const spSets = await scanElectivesFile("courses/spcourses.txt");
+    const auSets = await scanElectivesFile("courses/au-elective-courses.txt");
+    const wtSets = await scanElectivesFile("courses/wt-elective-courses.txt");
+    const spSets = await scanElectivesFile("courses/sp-elective-courses.txt");
 
     // populate the quarter maps
     populateQtMaps(auMap, auSets);
@@ -150,7 +150,7 @@ async function main() {
     console.log(wtMap);
     console.log(spMap);
 
-    // populate the final Electives map
+    // populate the final electives map
     electivesMap.set("au", auMap);
     electivesMap.set("wt", wtMap);
     electivesMap.set("sp", spMap);
