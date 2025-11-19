@@ -1,0 +1,43 @@
+123 Introduction to Computer Programming III (4) NSc, RSN: CSE 122 or completion of Paul G. Allen School's Guided Self-Placement
+311 Foundations of Computing I (4) RSN: CSE 123 or CSE 143; and a minimum grade of 2.0 in MATH 126 or MATH 135.
+312 Foundations of Computing II (4) RSN: CSE 311.
+331 Software Design and Implementation (4): a minimum grade of 2.0 in either CSE 123 or CSE 143.
+332 Data Structures and Parallelism (4): CSE 311.
+333 Systems Programming (4): CSE 351.
+340 Interaction Programming (4): CSE 123 or CSE 143.
+341 Programming Languages (4): CSE 123 or CSE 143.
+344 Introduction to Data Management (4): CSE 311.
+351 The Hardware/Software Interface (4): CSE 123 or CSE 143.
+369 Introduction to Digital Design (3): CSE 311.
+371 Design of Digital Circuits and Systems (5): either E E 205 or E E 215; either E E 271 or CSE 369. Offered: jointly with E E 371.
+391 System and Software Tools (1): either CSE 122, CSE 123, or CSE 143. Credit/no-credit only.
+401 Introduction to Compiler Construction (4): CSE 332 and CSE 351.
+403 Software Engineering (4): CSE 331; CSE 332.
+421 Introduction to Algorithms (3): CSE 312; CSE 332.
+422 Toolkit for Modern Algorithms (3): CSE 312; CSE 332; and MATH 208.
+426 Cryptography (4): CSE 312.
+427 Computational Biology (3): CSE 312; CSE 332.
+431 Introduction to Theory of Computation (3): CSE 312.
+434 Introduction to Quantum Computation (4): MATH 208 and CSE 312.
+438 Computational Neuroscience (3): MATH 126 or MATH 136; MATH 208; and CSE 312.
+440 Introduction to HCI: CSE 332.
+442 Data Visualization (4): CSE 332.
+443 Digital Accessibility (4) DIV: CSE 340.
+444 Database Systems Internals (4): CSE 332; and either CSE 344 or CSE 414.
+446 Machine Learning (4): CSE 332; MATH 208 or MATH 136; and either STAT 390, STAT 391, or CSE 312.
+447 Natural Language Processing (4): CSE 312 and CSE 332; recommended: MATH 208; and CSE 446 is recommended before or concurrently.
+451 Introduction to Operating Systems (4): CSE 332; CSE 333; and CSE 351.
+452 Introduction to Distributed Systems (4): CSE 332 and CSE 333; recommended: CSE 451
+455 Computer Vision (4): CSE 332.
+457 Computer Graphics (4): CSE 332.
+458 Computer Animation (5): CSE 457.
+461 Introduction to Computer-Communication Networks (4): either CSE 326 or CSE 332; either CSE 303 or CSE 333.
+462 Wireless Communication (4): MATH 208 and CSE 333.
+469 Computer Architecture I (5): either E E 271 or CSE 369; and either CSE 123 or CSE 143. Offered: jointly with E E 469.
+470 Computer Architecture II (4): either CSE 469 or E E 469. Offered: jointly with E E 470.
+473 Artificial Intelligence (3): CSE 312 and CSE 332.
+474 Introduction to Embedded Systems (4): CSE 123 or CSE 143 Offered: jointly with E E 474;
+478 Autonomous Robotics (4): CSE 332; recommended: CSE 312; MATH 208.
+481 Capstone Software Design (5, max. 15): CSE 312; CSE 332; CSE 351; and either CSE 331, CSE 333, or CSE 369.
+484 Computer Security (4): CSE 332; CSE 351.
+486 Introduction to Synthetic Biology (3): either MATH 136, MATH 207, MATH 307, AMATH 351, or CSE 311; and either MATH 208, MATH 308, or AMATH 352. Offered: jointly with BIOEN 423/CHEM E 476/E E 423.
