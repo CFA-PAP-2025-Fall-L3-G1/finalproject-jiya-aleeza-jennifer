@@ -26,32 +26,12 @@ async function scanElectivesFile(file) {
         const lines = currFile.split("\n"); 
 
         // use hybrid processing to read files 
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i];
-            const tokens = line.split(" ");
-            
-            for (let j in tokens) {
-                if (i === 0 ) { //first line
-                systems.add(tokens[j]);
-                } else if (i === 1) { //second line
-                    algorithms.add(tokens[j]);
-                } else if (i === 2) { //third line
-                    ai.add(tokens[j]);
-                } else { //fourth line
-                    applications.add(tokens[j]);
-                }
-            }
-        }
+        populateInterestCategories(lines, systems, algorithms, ai, applications);
+        console.log(ai);
 
     } else {
         console.error(`Error Status: ${response.status}`);
     }
-    // testing
-    // colors refers to excel spreadsheet
-    console.log(systems); // yellow
-    console.log(algorithms); // green
-    console.log(ai); // purple
-    console.log(applications); // blue
 
     return [systems, algorithms, ai, applications];
 }
@@ -118,8 +98,49 @@ async function scanCourseInfoFile(file) {
         console.error(`Error Status: ${response.status}`);
 
     }
-    // testing
-    console.log(courseInfoMap);
+}
+
+/*
+* Behavior: reads the capstone file and maps each quarter to its courses.
+* Returns: array of sets containing the courses.
+* Parameters: file of the capstone info;
+*/
+async function scanCapstoneFile(file) {
+    const response = await fetch(file);
+    let auCapstones = new Set();
+    let wtCapstones = new Set();
+    let spCapstones = new Set();
+
+    if (response.ok) {
+        const currFile = await response.text();
+        let lines = currFile.split("\n");
+
+        populateQtCapstones(lines, auCapstones, wtCapstones, spCapstones);
+
+    } else {
+        console.error(`Error Status: ${response.status}`);
+    }
+
+    return [auCapstones, wtCapstones, spCapstones];
+}
+
+function populateInterestCategories(lines, systems, ai, algorithms, applications) {
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        const tokens = line.split(" ");
+    
+        for (let j in tokens) {
+            if (i === 0 ) { //first line
+            systems.add(tokens[j]);
+            } else if (i === 1) { //second line
+                algorithms.add(tokens[j]);
+            } else if (i === 2) { //third line
+                ai.add(tokens[j]);
+            } else { //fourth line
+                applications.add(tokens[j]);
+            }
+        }
+    }
 }
 
 async function scanCapstoneFile(file) {
@@ -170,6 +191,25 @@ function populateQtMaps(qtMap, arrayOfSets) {
     }
 }
 
+function populateQtCapstones(lines, auCapstones, wtCapstones, spCapstones) {
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        const tokens = line.split(" ");
+
+        for (let j = 0; j < tokens.length; j++) {
+            let token = tokens[j];
+            
+            if (i == 0) {
+                auCapstones.add(token);
+            } else if (i == 1) {
+                wtCapstones.add(token);
+            } else {
+                spCapstones.add(token);
+            }
+        }
+    }
+}
+
 function populateCapstonesMap(qtCapstonesArray) {
     const quarters = ["au", "wt", "sp"];
 
@@ -189,17 +229,10 @@ async function main() {
     populateQtMaps(wtMap, wtSets);
     populateQtMaps(spMap, spSets);
 
-    // testing
-    console.log(auMap);
-    console.log(wtMap);
-    console.log(spMap);
-
     // populate the final electives map
     electivesMap.set("au", auMap);
     electivesMap.set("wt", wtMap);
     electivesMap.set("sp", spMap);
-    // testing
-    console.log(electivesMap);
 
     // populate fundamental courses set
     scanFundFile("courses/fundamental-courses.txt");
