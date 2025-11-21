@@ -1,0 +1,29 @@
+body {
+    background-color: white;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    background-color: #b7a57a;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 50px 20px 500px 20px;
+}
+
+h1 {
+    text-align: left;
+    color: white;
+    background-color: #4b2e83;
+    padding: 100px;
+    font-size: 4rem;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: black;
+    font-size: 1rem;
+}
