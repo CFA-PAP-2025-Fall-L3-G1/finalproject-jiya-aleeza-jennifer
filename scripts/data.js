@@ -143,6 +143,40 @@ function populateInterestCategories(lines, systems, ai, algorithms, applications
     }
 }
 
+async function scanCapstoneFile(file) {
+    const response = await fetch(file);
+    let auCapstones = new Set();
+    let wtCapstones = new Set();
+    let spCapstones = new Set();
+
+    if (response.ok) {
+        const currFile = await response.text();
+        let lines = currFile.split("\n");
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            const tokens = line.split(" ");
+
+            for (let j = 0; j < tokens.length; j++) {
+                let token = tokens[j];
+                
+                if (i == 0) {
+                    auCapstones.add(token);
+                } else if (i == 1) {
+                    wtCapstones.add(token);
+                } else {
+                    spCapstones.add(token);
+                }
+            }
+        }
+
+    } else {
+        console.error(`Error Status: ${response.status}`);
+    }
+    console.log(auCapstones);
+    return [auCapstones, wtCapstones, spCapstones];
+}
+
 /*
 * Behavior: populates each existing quarter map with a unique key-value pair.
 * Parameters: qtMap is the map to be populated;
@@ -182,6 +216,7 @@ function populateCapstonesMap(qtCapstonesArray) {
     for(let i = 0; i < quarters.length; i++) {
         capstonesMap.set(quarters[i], qtCapstonesArray[i]);
     }
+    console.log(capstonesMap);
 }
 
 async function main() {
