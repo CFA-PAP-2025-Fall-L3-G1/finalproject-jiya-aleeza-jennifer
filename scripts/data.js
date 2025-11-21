@@ -5,6 +5,7 @@ let spMap = new Map(); // map of available electives spring qt
 const fundamentalCourses = new Set(); // a set of required fundamental courses
 const capstonesMap = new Map(); // a map of available capstone courses for each qt
 
+
 let courseInfoMap = new Map(); // maps all courses to an array of strings
 
 /*
@@ -32,8 +33,33 @@ async function scanElectivesFile(file) {
     } else {
         console.error(`Error Status: ${response.status}`);
     }
+    console.log(electivesMap);
 
     return [systems, algorithms, ai, applications];
+}
+
+/*
+* Behavior: reads the capstone file and maps each quarter to its courses.
+* Returns: array of sets containing the courses.
+* Parameters: file of the capstone info;
+*/
+async function scanCapstoneFile(file) {
+    const response = await fetch(file);
+    let auCapstones = new Set();
+    let wtCapstones = new Set();
+    let spCapstones = new Set();
+
+    if (response.ok) {
+        const currFile = await response.text();
+        let lines = currFile.split("\n");
+
+        populateQtCapstones(lines, auCapstones, wtCapstones, spCapstones);
+
+    } else {
+        console.error(`Error Status: ${response.status}`);
+    }
+
+    return [auCapstones, wtCapstones, spCapstones];
 }
 
 /*
@@ -100,30 +126,6 @@ async function scanCourseInfoFile(file) {
     }
 }
 
-/*
-* Behavior: reads the capstone file and maps each quarter to its courses.
-* Returns: array of sets containing the courses.
-* Parameters: file of the capstone info;
-*/
-async function scanCapstoneFile(file) {
-    const response = await fetch(file);
-    let auCapstones = new Set();
-    let wtCapstones = new Set();
-    let spCapstones = new Set();
-
-    if (response.ok) {
-        const currFile = await response.text();
-        let lines = currFile.split("\n");
-
-        populateQtCapstones(lines, auCapstones, wtCapstones, spCapstones);
-
-    } else {
-        console.error(`Error Status: ${response.status}`);
-    }
-
-    return [auCapstones, wtCapstones, spCapstones];
-}
-
 function populateInterestCategories(lines, systems, ai, algorithms, applications) {
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
@@ -143,40 +145,6 @@ function populateInterestCategories(lines, systems, ai, algorithms, applications
     }
 }
 
-async function scanCapstoneFile(file) {
-    const response = await fetch(file);
-    let auCapstones = new Set();
-    let wtCapstones = new Set();
-    let spCapstones = new Set();
-
-    if (response.ok) {
-        const currFile = await response.text();
-        let lines = currFile.split("\n");
-
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i];
-            const tokens = line.split(" ");
-
-            for (let j = 0; j < tokens.length; j++) {
-                let token = tokens[j];
-                
-                if (i == 0) {
-                    auCapstones.add(token);
-                } else if (i == 1) {
-                    wtCapstones.add(token);
-                } else {
-                    spCapstones.add(token);
-                }
-            }
-        }
-
-    } else {
-        console.error(`Error Status: ${response.status}`);
-    }
-    console.log(auCapstones);
-    return [auCapstones, wtCapstones, spCapstones];
-}
-
 /*
 * Behavior: populates each existing quarter map with a unique key-value pair.
 * Parameters: qtMap is the map to be populated;
@@ -191,6 +159,11 @@ function populateQtMaps(qtMap, arrayOfSets) {
     }
 }
 
+/*
+* Behavior: populates each existing quarter captone courses.
+* Parameters: array of every line in the source file;
+              auCapstones/wtCapstones/spCapstones sets of courses offered in each respective qt.
+*/
 function populateQtCapstones(lines, auCapstones, wtCapstones, spCapstones) {
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
@@ -243,6 +216,9 @@ async function main() {
 
     // populate course info map
     scanCourseInfoFile("courses/course-info.txt");
+
+    // populate final map with all the courses
+    console.log(courseInfoMap);
 }
 
 main();
