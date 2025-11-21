@@ -126,6 +126,11 @@ async function scanCourseInfoFile(file) {
     }
 }
 
+/*
+* Behavior: populates the interest subcategories with its courses offered that qt.
+* Parameters: an array of lines from the source file;
+              systems/ai/algorithm/applications subcategory sets to be populated.
+*/
 function populateInterestCategories(lines, systems, ai, algorithms, applications) {
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
@@ -217,8 +222,6 @@ async function main() {
     // populate course info map
     scanCourseInfoFile("courses/course-info.txt");
 
-    // populate final map with all the courses
-    console.log(courseInfoMap);
 }
 
 main();
