@@ -221,4 +221,6 @@ async function main() {
     console.log(courseInfoMap);
 }
 
-main();
+export { electivesMap, auMap, wtMap, spMap, fundamentalCourses, capstonesMap, courseInfoMap };
+
+export { main };
