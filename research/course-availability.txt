@@ -1,0 +1,47 @@
+link: https://courses.cs.washington.edu/courses/cse000/time-sched/teaching2025-2026.html
+
+	AU	WT	SP
+311	x	x	x
+312	x	x	x
+331	x	x	x
+332	x	x	x
+351	x	x	x
+333	x	x	x
+340	x		x
+341		x	x
+344	x	x	x
+351	x	x	x
+369		x	x
+371	x	x	x
+391	x	x	x
+401	x		x
+403	x	x	
+421	x	x	x
+422		x	
+426	x		
+427	x		
+431	x		
+434			x
+438			x
+440	x	x	x
+442	x	x	
+443		x	
+444		x	x
+446	x	x	x
+447	x	x	
+451		x	x
+452	x	x	x
+453	x		
+455	x		x
+457	x	x	x
+458	x		
+461	x	x	
+462			x
+469	x	x	x
+470			x
+473	x	x	x
+474	x	x	x
+478		x	x
+484	x	x	x
+486	x		
+
