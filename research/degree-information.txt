@@ -1,0 +1,17 @@
+link: https://www.washington.edu/students/gencat/program/S/ComputerScience-210.html
+
+Completion Requirements
+77-82 Credits
+
+Science (5 credits): 5 credits from the list of approved natural science courses for Computer Science on the Allen School website.
+Mathematics (15-19 credits) complete one of the following:
+MATH 124, MATH 125, MATH 126, MATH 208
+MATH 134, MATH 135, MATH 136
+
+Fundamental Courses (24-25 credits): CSE 123 or CSE 143, CSE 311, CSE 312, CSE 331, CSE 332, CSE 351. Minimum 2.0 grade in each course.
+Core and Electives: 33 additional 300-level and 400-level credits as follows:
+
+Six courses from the CSE Core Courses list on the Allen School website of which at least four courses must be 400-level CSE courses.
+Either one additional course from the CSE Core Courses list or one course from the CSE Capstone list on the Allen School website.
+Additional courses from the CSE Electives list (which includes the CSE Core Courses list) on the Allen School website to bring the total for core and electives to 33 credits.
+Minimum 2.00 cumulative GPA in all CSE courses.
