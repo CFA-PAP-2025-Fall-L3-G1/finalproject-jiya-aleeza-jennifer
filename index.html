@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title></title>
-    </head>
-    <body>
-        <main></main>
-    </body>
-    <!-- main.js should be linked last -->
-     <script src = "scripts/data.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UW CSE Schedule Builder</title>
+    <link rel="stylesheet" href="styles/student2.css">
+</head>
+<body>
+    <h1>UW CSE Schedule Builder</h1>
+    <main>
+        <h2>What quarter are you planning?</h2>
+        <select id="quarter">
+            <option value="autumn">Autumn</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+        </select>
+        <button id="quarterSub">Submit</button>
+        <h2>What year are you?</h2>
+        <select id="year">
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year+</option>
+        </select>
+        <button onclick="alert('Year selected: ' + document.getElementById('year').value)">Submit</button>
+        <h2>What courses are you interested in taking this quarter?</h2>
+        <select id="interest">
+            <option value="cs_architecture">Computer Systems & Architecture subcategory</option>
+            <option value="algorithms_theory">Algorithms & Theory subcategory</option>
+            <option value="ai_ml">AI/Machine Learning subcategory</option>
+            <option value="applications">Computer Applications subcategory</option>
+        </select>
+        <button id="interestform">Submit</button>
+        <h2>What courses have you taken and passed?</h2>
+        <select id="taken">
+            <option value="courses_list">List of courses!</option>
+        </select>
+        <button onclick="alert('Courses selected: ' + document.getElementById('taken').value)">Submit</button>
+    </main>
+</body>
+<script type="module" src="scripts/connection.js"></script>
 </html>
