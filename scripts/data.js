@@ -107,7 +107,7 @@ async function scanCourseInfoFile(file) {
             let prereqInfo = line.substring(idxOfcolon+2); // +2 to count for : and whitespace
 
             const tokens = line.split(" ");
-            for (j = 0; j < tokens.length; j++) {
+            for (let j = 0; j < tokens.length; j++) {
                 let token = tokens[j];
 
                 if (j == 0) { // only want course number as key

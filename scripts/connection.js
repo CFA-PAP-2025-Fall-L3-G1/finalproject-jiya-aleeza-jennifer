@@ -8,7 +8,6 @@ let interestset = new Set();
 const form = document.querySelector("#quarterSub");
 form.disabled = true;
 const interestform = document.querySelector("#interestform");
-interestform.disabled = true;
 
 async function run() {
     await main();         
