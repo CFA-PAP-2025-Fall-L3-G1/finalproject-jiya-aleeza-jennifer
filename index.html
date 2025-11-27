@@ -16,14 +16,7 @@
             <option value="spring">Spring</option>
         </select>
         <button id="quarterSub">Submit</button>
-        <h2>What year are you?</h2>
-        <select id="year">
-            <option value="1">1st Year</option>
-            <option value="2">2nd Year</option>
-            <option value="3">3rd Year</option>
-            <option value="4">4th Year+</option>
-        </select>
-        <button onclick="alert('Year selected: ' + document.getElementById('year').value)">Submit</button>
+
         <h2>What courses are you interested in taking this quarter?</h2>
         <select id="interest">
             <option value="cs_architecture">Computer Systems & Architecture subcategory</option>
@@ -32,11 +25,17 @@
             <option value="applications">Computer Applications subcategory</option>
         </select>
         <button id="interestform">Submit</button>
-        <h2>What courses have you taken and passed?</h2>
-        <select id="taken">
-            <option value="courses_list">List of courses!</option>
+
+
+        <h2>What year are you?</h2>
+        <select id="year">
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year+</option>
         </select>
-        <button onclick="alert('Courses selected: ' + document.getElementById('taken').value)">Submit</button>
+        <button id="yearform">Submit</button>
+
     </main>
 </body>
 <script type="module" src="scripts/connection.js"></script>

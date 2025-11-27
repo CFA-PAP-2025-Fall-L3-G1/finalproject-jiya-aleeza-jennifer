@@ -8,6 +8,7 @@ let interestset = new Set();
 const form = document.querySelector("#quarterSub");
 form.disabled = true;
 const interestform = document.querySelector("#interestform");
+const yearform = document.querySelector ("#yearform")
 
 async function run() {
     await main();         
@@ -42,7 +43,6 @@ form.addEventListener("click", function(e) {
 
 
 function interested() {
-    console.log("here");
     if (!mainRun) {
         console.log("Data not loaded yet!");
         return; 
@@ -64,4 +64,33 @@ function interested() {
 interestform.addEventListener("click", function(e) {
     e.preventDefault(); 
     interested();
+});
+
+
+function year() {
+    if (!mainRun) {
+        console.log("Data not loaded yet!");
+        return; 
+    }
+    const selectedyear = document.getElementById("year").value;
+    if (selectedyear === "1" || selectedyear === "2" || selectedyear === "3") {
+        interestset.forEach((course) => {
+            if (capstonesMap.has(course)) {
+                interestset.delete(course)
+            }
+        });
+    } else {
+        interestset.forEach((course) => {
+            if (fundamentalCourses.has(course)) {
+                interestset.delete(course)
+            }
+        });
+    }
+    console.log("Selected year:", selectedyear);
+    console.log("Year map:", interestset);
+}
+
+yearform.addEventListener("click", function(e) {
+    e.preventDefault(); 
+    year();
 });
