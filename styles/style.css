@@ -1,0 +1,103 @@
+body {
+    background-repeat: no-repeat;
+    background-image: url('/images/uw-background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center bottom;
+    font-family: 'Times New Roman', sans-serif;
+    font-size: 1.9rem;
+    text-align: center;
+}
+
+footer {
+    background-color: #555555;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10vw;
+    padding: 0.1vw;
+}
+
+h1 {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 1.7vw;
+}
+
+h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 0.9vw;
+}
+
+input, label, select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%
+}
+
+input, select {
+    color: #555555;
+    font-size: 1.2rem;
+    padding: 0.3vw;
+}
+
+
+label {
+    color: white;
+    margin-bottom: 0.6vw;
+}
+
+.button {
+    background-color: #4b2e83;
+    border: 0;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 2.8vw auto 0 auto;
+    padding: 0.9vw;
+    text-align: center;
+    text-transform: uppercase;
+    width: 40%;
+}
+
+.button:hover {
+    background-color: #555555;
+    cursor: pointer;
+}
+
+.questions-answers {
+    border: 0.1vw solid white;
+    border-radius: 10px;
+    margin: 0 auto 0.9vw auto;
+    padding: 2.4vw;
+    text-align: left;
+}
+
+#available-courses {
+    border-color: black;
+    border-radius: 10px;
+    color: black;
+}
+
+#results {
+    background-color: #b7a57a;
+    box-shadow: 0 0 20px #b7a57a;
+    display: none;
+    margin: 1.7vw auto 0 auto;
+    max-width: 800px;
+    padding: 0.9vw 1.2vw 2.8vw 1.2vw;
+}
+
+#schedule-form {
+    background-color: #b7a57a;
+    box-shadow: 0 0 20px #b7a57a;
+    margin: 1.7vw auto 0 auto;
+    max-width: 800px;
+    padding: 1.2vw 1.2vw 2.8vw 1.2vw;
+}
