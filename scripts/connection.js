@@ -94,3 +94,25 @@ yearform.addEventListener("click", function(e) {
     e.preventDefault(); 
     year();
 });
+
+document.getElementById("yearform").addEventListener("click", () => {
+    const div = document.getElementById("completedCourses");
+    div.innerHTML = ""; 
+    interestset.forEach(course => {
+        const label = document.createElement("label");
+        label.innerHTML = `
+            <input type="checkbox" class="completedCourse" value="${course}">
+            ${course}<br>
+        `;
+        div.appendChild(label);
+    });
+});
+
+document.getElementById("completedForm").addEventListener("click", () => {
+    const selected = [...document.querySelectorAll(".completedCourse:checked")]
+                     .map(cb => cb.value);
+
+    console.log("Courses already taken:", selected);
+    const remaining = interestset.filter(c => !selected.includes(c));
+    console.log("Remaining courses:", remaining);
+});
