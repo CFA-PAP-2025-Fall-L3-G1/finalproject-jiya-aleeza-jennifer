@@ -4,7 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UW CSE Schedule Builder</title>
-    <link rel="stylesheet" href="styles/student2.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="nav">
+                <li><a href="menu.html ">Welcome</a></li>
+                <li><a href="index.html" class="current-nav-page">Schedule Builder Form</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>UW CSE Schedule Builder</h1>
+        <form id="schedule-form">
+            <div class="questions-answers">
+                <label for="sender-quarter">What quarter are you planning?</label>
+                <select id="sender-quarter" name="sender-quarter">
+                    <option>Select quarter</option>
+                    <option value="autumn">Autumn</option>
+                    <option value="winter">Winter</option>
+                    <option value="spring">Spring</option>
+                </select>
+            </div>
+            <div class="questions-answers">
+                <label for="interested-courses">What course category are you interested in taking?</label>
+                <select type="text" id="interested-courses" name="interested-courses">
+                    <option>Select course category</option>
+                    <option value="cs_architecture">Computer Systems & Architecture</option>
+                    <option value="algorithms_theory">Algorithms & Theory</option>
+                    <option value="ai_ml">AI/Machine Learning</option>
+                    <option value="applications">Computer Applications</option>
+                </select>
+            </div>
+            <div class="questions-answers">
+                <label for="sender-year">What year are you?</label>
+                <select id="sender-year" name="sender-year">
+                    <option>Select year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year+</option>
+                </select>
+            </div>
+            <button id="filterform">Submit</button>
+            <div class="questions-answers">
+                <label for="finished-courses">What courses have you taken and passed?</label>
+                <h3 id="completedCourses"></h3>
+            </div>
+            <input type="submit" class="button" id="completedForm" value="Generate Course Options">
+        </form>
+        <div id="results">
+            <div class="text">
+                <h2>Here are the courses you can take for <br> <span id="sender-quarter"></span> quarter!</h2>
+                <h3 id="available-courses"></h3>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; UW CSE Schedule Builder 2025. All rights reserved.</p>
+    </footer>
+</body>
+<script type="module" src="scripts/data.js"></script>
+<script type="module" src="scripts/connection.js"></script>
+</html>
+    <!-- <link rel="stylesheet" href="styles/student2.css">
 </head>
 <body>
     <h1>UW CSE Schedule Builder</h1>
@@ -42,4 +106,4 @@
     </main>
 </body>
 <script type="module" src="scripts/connection.js"></script>
-</html>
+</html> -->
