@@ -5,7 +5,7 @@ let mainRun = false;
 
 let interestset = new Set();
 
-const form = document.querySelector("#filterform");
+const form = document.querySelector("#searchbutton");
 const yearform = document.querySelector("#yearform");
 
 async function run() {
@@ -64,7 +64,7 @@ function quarter() {
 
 // --- CLICK HANDLERS ---
 
-document.getElementById("filterform").addEventListener("click", (e) => {
+document.getElementById("searchbutton").addEventListener("click", (e) => {
     e.preventDefault();
     quarter();
 
@@ -82,13 +82,20 @@ document.getElementById("filterform").addEventListener("click", (e) => {
     });
 });
 
-document.getElementById("completedForm").addEventListener("click", () => {
+document.getElementById("completedForm").addEventListener("click", (e) => {
+    e.preventDefault();
+
+
     const selected = [...document.querySelectorAll(".completedCourse:checked")]
         .map(cb => cb.value);
-
-    console.log("Courses already taken:", selected);
-
     const remaining = [...interestset].filter(c => !selected.includes(c));
+    const resultsBox = document.getElementById("results");
+    resultsBox.style.display = "block";
 
-    console.log("Remaining courses:", remaining);
+    const quarterLabel = document.querySelector("#results span#sender-quarter");
+    quarterLabel.textContent = document.getElementById("sender-quarter").value;
+    const output = document.getElementById("available-courses");
+    output.innerHTML = remaining.length > 0
+        ? remaining.join("<br>")
+        : "You have already taken all eligible courses!";
 });
