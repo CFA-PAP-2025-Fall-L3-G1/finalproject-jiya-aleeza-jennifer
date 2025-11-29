@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UW CSE Schedule Builder</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -19,7 +25,7 @@
         <h1>UW CSE Schedule Builder</h1>
         <form id="schedule-form">
             <div class="questions-answers">
-                <label for="sender-quarter">What quarter are you planning?</label>
+                <label for="sender-quarter">Which quarter are you planning?</label>
                 <select id="sender-quarter" name="sender-quarter">
                     <option>Select quarter</option>
                     <option value="autumn">Autumn</option>
@@ -28,17 +34,7 @@
                 </select>
             </div>
             <div class="questions-answers">
-                <label for="interested-courses">What course category are you interested in taking?</label>
-                <select type="text" id="interested-courses" name="interested-courses">
-                    <option>Select course category</option>
-                    <option value="cs_architecture">Computer Systems & Architecture</option>
-                    <option value="algorithms_theory">Algorithms & Theory</option>
-                    <option value="ai_ml">AI/Machine Learning</option>
-                    <option value="applications">Computer Applications</option>
-                </select>
-            </div>
-            <div class="questions-answers">
-                <label for="sender-year">What year are you?</label>
+                <label for="sender-year">Which year are you?</label>
                 <select id="sender-year" name="sender-year">
                     <option>Select year</option>
                     <option value="1">1st Year</option>
@@ -47,16 +43,26 @@
                     <option value="4">4th Year+</option>
                 </select>
             </div>
-            <button id="searchbutton">Search</button>
             <div class="questions-answers">
-                <label for="finished-courses">What courses have you taken and passed?</label>
+                <label for="interested-courses">Which course category are you interested in?</label>
+                <select type="text" id="interested-courses" name="interested-courses">
+                    <option>Select course category</option>
+                    <option value="cs_architecture">Computer Systems & Architecture</option>
+                    <option value="algorithms_theory">Algorithms & Theory</option>
+                    <option value="ai_ml">AI/Machine Learning</option>
+                    <option value="applications">Computer Applications</option>
+                </select>
+                <input type="submit" id="searchbutton" value="Search">
+            </div>
+            <div class="questions-answers">
+                <label for="finished-courses">Which of the courses below have you taken and passed?</label>
                 <h3 id="completedCourses"></h3>
             </div>
             <input type="submit" class="button" id="completedForm" value="Generate Course Options">
         </form>
         <div id="results">
-            <div class="text">
-                <h2>Here are the courses you can take for <br> <span id="sender-quarter"></span> quarter!</h2>
+            <div id="text">
+                <h2>Here are the courses you can take in <span id="sender-quarter"></span> quarter!</h2>
                 <div id="available-courses"></div>
             </div>
         </div>
@@ -68,42 +74,3 @@
 <script type="module" src="scripts/data.js"></script>
 <script type="module" src="scripts/main.js"></script>
 </html>
-    <!-- <link rel="stylesheet" href="styles/student2.css">
-</head>
-<body>
-    <h1>UW CSE Schedule Builder</h1>
-    <main>
-        <h2>What quarter are you planning?</h2>
-        <select id="quarter">
-            <option value="autumn">Autumn</option>
-            <option value="winter">Winter</option>
-            <option value="spring">Spring</option>
-        </select>
-        <button id="quarterSub">Submit</button>
-
-        <h2>What courses are you interested in taking this quarter?</h2>
-        <select id="interest">
-            <option value="cs_architecture">Computer Systems & Architecture subcategory</option>
-            <option value="algorithms_theory">Algorithms & Theory subcategory</option>
-            <option value="ai_ml">AI/Machine Learning subcategory</option>
-            <option value="applications">Computer Applications subcategory</option>
-        </select>
-        <button id="interestform">Submit</button>
-
-
-        <h2>What year are you?</h2>
-        <select id="year">
-            <option value="1">1st Year</option>
-            <option value="2">2nd Year</option>
-            <option value="3">3rd Year</option>
-            <option value="4">4th Year+</option>
-        </select>
-        <button id="yearform">Submit</button>
-
-        <h2>Which of these courses have you already taken?</h2>
-        <div id="completedCourses"></div>
-        <button id="completedForm">Submit</button>
-    </main>
-</body>
-<script type="module" src="scripts/connection.js"></script>
-</html> -->

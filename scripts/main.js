@@ -6,7 +6,8 @@ let mainRun = false;
 let interestset = new Set();
 
 const form = document.querySelector("#searchbutton");
-const yearform = document.querySelector("#yearform");
+const scheduleForm = document.querySelector("#schedule-form");
+const results = document.querySelector("#results");
 
 async function run() {
     await main();
@@ -85,6 +86,9 @@ document.getElementById("searchbutton").addEventListener("click", (e) => {
 document.getElementById("completedForm").addEventListener("click", (e) => {
     e.preventDefault();
 
+    scheduleForm.style.display = "none";
+    results.style.display = "block";
+
 
     const selected = [...document.querySelectorAll(".completedCourse:checked")]
         .map(cb => cb.value);
@@ -97,5 +101,5 @@ document.getElementById("completedForm").addEventListener("click", (e) => {
     const output = document.getElementById("available-courses");
     output.innerHTML = remaining.length > 0
         ? remaining.join("<br>")
-        : "You have already taken all eligible courses!";
+        : "You have already taken all eligible courses!";    
 });
