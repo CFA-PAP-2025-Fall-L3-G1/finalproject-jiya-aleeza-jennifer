@@ -1,17 +1,17 @@
 body {
-    background-repeat: no-repeat;
-    background-image: url('/images/uw-background.jpg');
     background-attachment: fixed;
-    background-size: cover;
+    background-image: url('/images/uw-background.jpg');
     background-position: center bottom;
-    font-family: 'Times New Roman', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Ysabeau', sans-serif;
     font-size: 1.9rem;
-    text-align: center;
     margin: 0;
+    text-align: center;
 }
 
 footer {
-    background-color: #555555;
+    background-color: #777777;
     color: white;
     font-size: 1.2rem;
     margin-top: 20vw;
@@ -19,18 +19,20 @@ footer {
 }
 
 header {
-    background-color: #555555;
+    background-color: #777777;
 }
 
 h1 {
     color: white;
     font-size: 4rem;
     text-align: center;
+    font-family: 'Tinos', serif
 }
 
 h2 {
     color: white;
     margin-bottom: 1.7vw;
+    margin-top: 0;
 }
 
 h3 {
@@ -46,7 +48,7 @@ input, label, select {
 }
 
 input, select {
-    color: #555555;
+    color: #666666;
     font-size: 1.2rem;
     padding: 0.3vw;
 }
@@ -56,31 +58,28 @@ label {
     margin-bottom: 0.6vw;
 }
 
-.button, .button-menu {
+.button {
+    width: 37%;
+}
+
+.button, #button-menu, #searchbutton {
     background-color: #4b2e83;
     border: 0;
     border-radius: 30px;
     color: white;
+    display: block;
+    font-family: 'Ysabeau', sans-serif;
     font-size: 1.1rem;
     font-weight: bold;
     margin: 2.8vw auto 0 auto;
     padding: 0.9vw;
     text-align: center;
-    text-transform: uppercase;
     text-decoration: none;
-    display: block;
+    text-transform: uppercase;
 }
 
-.button {
-    width: 40%;
-}
-
-.button-menu {
-    width: 22%;
-}
-
-.button:hover, .button-menu:hover {
-    background-color: #555555;
+.button:hover, #button-menu:hover, #searchbutton:hover {
+    background-color: #777777;
     cursor: pointer;
 }
 
@@ -94,21 +93,25 @@ label {
 }
 
 #available-courses {
-    border-color: black;
-    border-radius: 10px;
-    color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+#button-menu {
+    width: 18%;
 }
 
 #nav {
     display: inline-block;
     list-style-type: none;
-    margin: 0 0 10px 0;
+    margin: 0 0 0.5vw 0;
     vertical-align: middle;
 }
 
 #nav > li {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 0.9vw;
 }
 
 #nav > li > a {
@@ -118,6 +121,7 @@ label {
 }
 
 #nav > li > a:hover {
+    color: #4b2e83;
     text-decoration: underline;
 }
 
@@ -126,19 +130,12 @@ label {
 }
 
 #results {
-    display: none;
     background-color: white;
     box-shadow: 0 0 15px #b7a57a;
-    margin: 1.7vw auto 0 auto;
+    display: none;
+    margin: auto;
     max-width: 800px;
-    padding: 1.2vw 1.2vw 2.8vw 1.2vw;
-
-    background-color: #b7a57a;
-    border: 0.1vw solid white;
-    border-radius: 10px;
-    padding: 2.4vw;
-    text-align: center;
-
+    padding: 1.2vw;
 }
 
 #schedule-form {
@@ -147,6 +144,21 @@ label {
     margin: 1.7vw auto 0 auto;
     max-width: 800px;
     padding: 1.2vw 1.2vw 2.8vw 1.2vw;
+}
+
+#searchbutton {
+    font-size: 0.9rem;
+    margin: 1.2vw auto 0 auto;
+    width: 13%;
+}
+
+#text {
+    background-color: #b7a57a;
+    border: 0.1vw solid white;
+    border-radius: 10px;
+    margin: auto;
+    padding: 2.4vw;
+    text-align: left;
 }
 
 #welcome {
@@ -164,19 +176,4 @@ label {
     margin: 0 auto 0.9vw auto;
     padding: 2.4vw;
     text-align: left;
-}
-
-#searchbutton {
-    background-color: #4b2e83;
-    border: 0;
-    border-radius: 30px;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin: 0.5vw auto 4vw auto;  /* top | right | bottom | left */
-    padding: 0.9vw;
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: block;   
 }
