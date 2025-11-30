@@ -3,7 +3,9 @@ import { electivesMap, auMap, wtMap, spMap, fundamentalCourses, capstonesMap, co
 let quartermap = new Map();
 let mainRun = false;
 
-let interestset = new Set();
+let interestSet = new Set();
+let capstoneSet = new Set();
+let finalSelection = new Set();
 
 const form = document.querySelector("#searchbutton");
 const scheduleForm = document.querySelector("#schedule-form");
@@ -28,39 +30,52 @@ function quarter() {
 
     if (selectedQuarter === "autumn") {
         quartermap = auMap;
+        capstoneSet = capstonesMap.get("au");
     } else if (selectedQuarter === "winter") {
         quartermap = wtMap;
+        capstoneSet = capstonesMap.get("wt");
     } else {
         quartermap = spMap;
+        capstoneSet = capstonesMap.get("sp");
     }
 
     // Interest
-    const selectedinterest = document.getElementById("interested-courses").value;
+    const selectedInterest = document.getElementById("interested-courses").value;
 
-    if (selectedinterest === "cs_architecture") {
-        interestset = quartermap.get("sys");
-    } else if (selectedinterest === "algorithms_theory") {
-        interestset = quartermap.get("alg");
-    } else if (selectedinterest === "ai_ml") {
-        interestset = quartermap.get("ai");
-    } else if (selectedinterest === "applications") {
-        interestset = quartermap.get("app");
+    if (selectedInterest === "cs_architecture") {
+        interestSet = quartermap.get("sys");
+    } else if (selectedInterest === "algorithms_theory") {
+        interestSet = quartermap.get("alg");
+    } else if (selectedInterest === "ai_ml") {
+        interestSet = quartermap.get("ai");
+    } else if (selectedInterest === "applications") {
+        interestSet = quartermap.get("app");
     }
 
     // Year
-    const selectedyear = document.getElementById("sender-year").value;
+    const selectedYear = document.getElementById("sender-year").value;
 
-    if (selectedyear === "1" || selectedyear === "2" || selectedyear === "3") {
-        interestset.forEach(course => {
-            if (capstonesMap.has(course)) interestset.delete(course);
+    if (selectedYear === "1" || selectedYear === "2" || selectedYear === "3") {
+        fundamentalCourses.forEach(function(currCourse) {
+            finalSelection.add(currCourse);
         });
+        interestSet.forEach(function(currCourse) {
+            finalSelection.add(currCourse);
+        });
+
     } else {
-        interestset.forEach(course => {
-            if (fundamentalCourses.has(course)) interestset.delete(course);
+        interestSet.forEach(function(currCourse) {
+            finalSelection.add(currCourse);
+        });
+        capstoneSet.forEach(function(currCourse) {
+            finalSelection.add(currCourse);
         });
     }
 
-    console.log("Filtered set:", interestset);
+    console.log("course info:", courseInfoMap);
+    console.log("capstone set:", capstoneSet);
+    console.log("fund set:", fundamentalCourses);
+    console.log("Filtered set:", finalSelection);
 }
 
 // --- CLICK HANDLERS ---
@@ -73,7 +88,7 @@ document.getElementById("searchbutton").addEventListener("click", (e) => {
     const div = document.getElementById("completedCourses");
     div.innerHTML = "";
 
-    interestset.forEach(course => {
+    finalSelection.forEach(course => {
         const label = document.createElement("label");
         label.innerHTML = `
             <input type="checkbox" class="completedCourse" value="${course}">
@@ -92,14 +107,43 @@ document.getElementById("completedForm").addEventListener("click", (e) => {
 
     const selected = [...document.querySelectorAll(".completedCourse:checked")]
         .map(cb => cb.value);
-    const remaining = [...interestset].filter(c => !selected.includes(c));
+
+    //gets rid of checked boxes and stores into remaining array
+    const remaining = [...finalSelection].filter(c => !selected.includes(c));
     const resultsBox = document.getElementById("results");
     resultsBox.style.display = "block";
 
     const quarterLabel = document.querySelector("#results span#sender-quarter");
     quarterLabel.textContent = document.getElementById("sender-quarter").value;
     const output = document.getElementById("available-courses");
-    output.innerHTML = remaining.length > 0
-        ? remaining.join("<br>")
-        : "You have already taken all eligible courses!";    
+
+    // create map with filtered course => course info
+    const remainingMap = new Map();
+    for (let i = 0; i < remaining.length; i++) {
+        let courseName = remaining[i];
+        let courseInfo = courseInfoMap.get(courseName);
+        remainingMap.set(courseName, courseInfo);
+    }
+
+    console.log("remaining map:", remainingMap);
+
+    const keysArray = [...remainingMap.keys()]; // get an array of all the keys
+
+    if (keysArray.length > 0) {
+        for (let i = 0; i < keysArray.length; i++) {
+            const course = keysArray[i];
+            const courseInfoArray = remainingMap.get(course);
+
+            let credits = courseInfoArray[0]; 
+            let description = courseInfoArray[1]; 
+            let prereqs = courseInfoArray[2];
+            
+            output.innerHTML += "CSE " +course+ ": " +description + " " + credits;
+            output.innerHTML +=
+                '<span id="prereq-info">' + "prequisites: " +prereqs+ '</span></br>';
+        }
+
+    } else {
+        output.innerHTML = "You have already taken all eligible courses!";
+    }
 });
