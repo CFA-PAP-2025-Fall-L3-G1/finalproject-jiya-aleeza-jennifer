@@ -86,13 +86,14 @@ document.getElementById("searchbutton").addEventListener("click", (e) => {
 
     // Populate checkboxes
     const div = document.getElementById("completedCourses");
-    div.innerHTML = "";
+    //div.innerHTML = "";
 
-    finalSelection.forEach(course => {
+
+    finalSelection.forEach(function(course) {
         const label = document.createElement("label");
         label.innerHTML = `
-            <input type="checkbox" class="completedCourse" value="${course}">
-            ${course}<br>
+            <input type="checkbox" class="completedCourses" value="${course}">
+            ${course}
         `;
         div.appendChild(label);
     });
@@ -105,7 +106,7 @@ document.getElementById("completedForm").addEventListener("click", (e) => {
     results.style.display = "block";
 
 
-    const selected = [...document.querySelectorAll(".completedCourse:checked")]
+    const selected = [...document.querySelectorAll(".completedCourses:checked")]
         .map(cb => cb.value);
 
     //gets rid of checked boxes and stores into remaining array

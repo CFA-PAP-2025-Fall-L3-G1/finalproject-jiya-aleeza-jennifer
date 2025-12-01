@@ -11,7 +11,7 @@ body {
 }
 
 footer {
-    background-color: #777777;
+    background-color: #643b91;
     color: white;
     font-size: 1.2rem;
     margin-top: 20vw;
@@ -19,7 +19,7 @@ footer {
 }
 
 header {
-    background-color: #777777;
+    background-color: #643b91;
 }
 
 h1 {
@@ -33,6 +33,7 @@ h2 {
     color: white;
     margin-bottom: 1.7vw;
     margin-top: 0;
+    text-align: center;
 }
 
 h3 {
@@ -128,7 +129,7 @@ label {
 }
 
 #nav > li > a:hover {
-    color: #4b2e83;
+    color: #b7a57a;
     text-decoration: underline;
 }
 
@@ -183,4 +184,9 @@ label {
     margin: 0 auto 0.9vw auto;
     padding: 2.4vw;
     text-align: left;
+}
+
+input {
+    width: auto;
+    display: inline-block;
 }
