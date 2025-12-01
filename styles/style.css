@@ -24,9 +24,9 @@ header {
 
 h1 {
     color: white;
+    font-family: 'Tinos', serif;
     font-size: 4rem;
     text-align: center;
-    font-family: 'Tinos', serif
 }
 
 h2 {
@@ -40,6 +40,11 @@ h3 {
     color: white;
     font-size: 1.2rem;
     margin-bottom: 0.9vw;
+}
+
+input {
+    display: inline-block;
+    width: auto;
 }
 
 input, label, select {
@@ -95,20 +100,14 @@ label {
 
 #available-courses {
     color: white;
+    font-size: 25px;
     font-weight: bold;
     text-align: left;
-    font-size: 25px;
-}
-
-#prereq-info {
-    font-size: 20px;   
-    text-align: left;  
-    display: block;      
 }
 
 #button-menu {
-    width: 18%;
     margin-top: 0.9vw;
+    width: 18%;
 }
 
 #nav {
@@ -136,6 +135,12 @@ label {
 
 #nav > li > .current-nav-page {
     text-decoration: underline;
+}
+
+#prereq-info {
+    display: block;      
+    font-size: 20px;   
+    text-align: left;  
 }
 
 #results {
@@ -185,9 +190,4 @@ label {
     margin: 0 auto 0 auto;
     padding: 2.4vw;
     text-align: left;
-}
-
-input {
-    width: auto;
-    display: inline-block;
 }
