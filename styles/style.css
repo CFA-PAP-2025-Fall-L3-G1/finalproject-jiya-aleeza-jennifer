@@ -72,7 +72,7 @@ label {
     font-family: 'Ysabeau', sans-serif;
     font-size: 1.1rem;
     font-weight: bold;
-    margin: 2.8vw auto 0 auto;
+    margin: auto;
     padding: 0.9vw;
     text-align: center;
     text-decoration: none;
@@ -108,6 +108,7 @@ label {
 
 #button-menu {
     width: 18%;
+    margin-top: 0.9vw;
 }
 
 #nav {
@@ -151,7 +152,7 @@ label {
     box-shadow: 0 0 15px #b7a57a;
     margin: 1.7vw auto 0 auto;
     max-width: 800px;
-    padding: 1.2vw 1.2vw 2.8vw 1.2vw;
+    padding: 1.2vw;
 }
 
 #searchbutton {
@@ -174,14 +175,14 @@ label {
     box-shadow: 0 0 15px #b7a57a;
     margin: 1.7vw auto 0 auto;
     max-width: 800px;
-    padding: 1.2vw 1.2vw 2.8vw 1.2vw;
+    padding: 1.2vw;
 }
 
 #welcome-info {
     background-color: #b7a57a;
     border: 0.1vw solid white;
     border-radius: 10px;
-    margin: 0 auto 0.9vw auto;
+    margin: 0 auto 0 auto;
     padding: 2.4vw;
     text-align: left;
 }
