@@ -42,15 +42,16 @@ h3 {
     margin-bottom: 0.9vw;
 }
 
-input {
-    display: inline-block;
-    width: auto;
-}
 
 input, label, select {
     box-sizing: border-box;
     display: block;
     width: 100%
+}
+
+input {
+    display: inline-block;
+    width: auto;
 }
 
 input, select {
