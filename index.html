@@ -16,61 +16,40 @@
     <header>
         <nav>
             <ul id="nav">
-                <li><a href="menu.html ">Welcome</a></li>
-                <li><a href="index.html" class="current-nav-page">Schedule Builder Form</a></li>
+                <li><a href="index.html" class="current-nav-page">Welcome</a></li>
+                <li><a href="form.html">Schedule Builder Form</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h1>UW CSE Schedule Builder</h1>
-        <form id="schedule-form">
-            <div class="questions-answers">
-                <label for="sender-quarter">Which quarter are you planning?</label>
-                <select id="sender-quarter" name="sender-quarter">
-                    <option>Select quarter</option>
-                    <option value="autumn">Autumn</option>
-                    <option value="winter">Winter</option>
-                    <option value="spring">Spring</option>
-                </select>
-            </div>
-            <div class="questions-answers">
-                <label for="sender-year">Which year are you?</label>
-                <select id="sender-year" name="sender-year">
-                    <option>Select year</option>
-                    <option value="1">1st Year</option>
-                    <option value="2">2nd Year</option>
-                    <option value="3">3rd Year</option>
-                    <option value="4">4th Year+</option>
-                </select>
-            </div>
-            <div class="questions-answers">
-                <label for="interested-courses">Which course category are you interested in?</label>
-                <select type="text" id="interested-courses" name="interested-courses">
-                    <option>Select course category</option>
-                    <option value="cs_architecture">Computer Systems & Architecture</option>
-                    <option value="algorithms_theory">Algorithms & Theory</option>
-                    <option value="ai_ml">AI/Machine Learning</option>
-                    <option value="applications">Computer Applications</option>
-                </select>
-                <input type="submit" id="searchbutton" value="Search">
-            </div>
-            <div class="questions-answers">
-                <label for="finished-courses">Which CSE courses below have you taken and passed?</label>
-                <div id="completedCourses"></div>
-            </div>
-            <input type="submit" class="button" id="completedForm" value="Generate Course Options">
-        </form>
-        <div id="results">
-            <div id="text">
-                <h2>Here's your <span id="sender-quarter"></span> quarter options!</h2>
-                <div id="available-courses"></div>
-            </div>
+    <h1>UW CSE Schedule Builder</h1>
+    <main id="welcome">
+        <div id="welcome-info">
+            <h2>Welcome!</h2>
+            <h3>
+                The UW CSE Schedule Builder is designed to help you choose classes for 
+                your quarter of choice! We understand how difficult it can be to narrow 
+                down and decide from the never-ending list of courses at UW as a CSE student, 
+                so we're here to help!
+            </h3>
+            <h3>
+                After selecting the quarter you’d like to plan for and the year you’re in, 
+                you have the option to pick courses from four different categories. These 
+                categories include: Computer Systems & Architecture, Algorithms &  Theory, 
+                AI/Machine Learning, and Computer Applications. You'll then be asked to select 
+                the classes you have taken and passed from that category. Once you click 
+                'Generate Course Option', you'll be presented with a lsit of classes you can 
+                choose for your schedule!
+            </h3>
+            <h3>
+                To get started, click the button below!
+            </h3>
         </div>
+        <a href="form.html" id="button-menu">Get started</a>
     </main>
     <footer>
         <p>&copy; UW CSE Schedule Builder 2025. All rights reserved.</p>
     </footer>
 </body>
-<script type="module" src="scripts/data.js"></script>
-<script type="module" src="scripts/main.js"></script>
+<script src="scripts/data.js"></script>
+<script src="scripts/main.js"></script>
 </html>
